@@ -1,0 +1,35 @@
+﻿<Window x:Class="Claysys.PPP.ApplicationDetails.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Claysys.PPP.ApplicationDetails"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        Title="Payroll Protection Program" Height="450" Width="800">
+    <Grid>
+        <Rectangle Fill="#FF20AC2D" HorizontalAlignment="Left" Height="48" Margin="-4,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="796" StrokeThickness="0"/>
+        <Label x:Name="label" Content="PPP - Approved Applications" HorizontalAlignment="Left" Height="37.696" Margin="26.972,10,0,0" VerticalAlignment="Top" Width="231.376" Background="#00000000" Foreground="WhiteSmoke" FontFamily="Segoe UI Semibold" FontSize="16" />
+        <DataGrid Name="appGrid" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False"  Margin="26.972,83.806,25.506,134.818" BorderThickness="1" BorderBrush="#89000000" ItemsSource ="{Binding GridData}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header = "Loan Application No" Binding = "{Binding LoanApplicationNumber}" Width="*"/>
+                <DataGridTextColumn Header = "SBA Loan No" Binding = "{Binding SBALoanNo}" Width="*"/>
+                <DataGridTextColumn Header = "Business Name" Binding = "{Binding BusinessName}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="Export" x:Name="button" Content="{Binding ExportButtonContent}" HorizontalAlignment="Left" Height="24.506" Margin="636,316.51,0,0" VerticalAlignment="Top" Width="121.911"  Background="#FF3D6AB9" IsEnabled="{Binding Enability}" />
+        <ProgressBar Value="{Binding Progress}" HorizontalAlignment="Left" Height="7" Margin="27,387,0,0"   VerticalAlignment="Top" Width="739" RenderTransformOrigin="-0.219,0.348" Background="White" Foreground="#FF073863" BorderBrush="{x:Null}"/>
+        <Label x:Name="label1" Content="Total Request :" HorizontalAlignment="Left" Margin="27,314,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="14"/>
+        <Label x:Name="TotReqCount" Content="{Binding TotalReqCount}" HorizontalAlignment="Left" Margin="144,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.608,-0.174" Height="39" FontFamily="Verdana" FontSize="18" Width="114"/>
+        <Label x:Name="label2" Content="Dont close the window" HorizontalAlignment="Left" Margin="318,301,0,0" VerticalAlignment="Top" Width="145" Visibility="{Binding LoadingVisible}" Foreground="#DDB62B2B"/>
+        <!--<TextBlock Visibility="{Binding LoadingVisible}" Margin="10,0,-10,389" >Loading</TextBlock>-->
+    </Grid>
+</Window>
